@@ -1,16 +1,21 @@
+<!-- tillstk_initiate.php -->
 <?php
-if(isset($_POST['submit'])){
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header('Access-Control-Allow-Headers: Content-Type');
 
+if(isset($_POST['submit'])){
 
   date_default_timezone_set('Africa/Nairobi');
 
   # access token
-  $consumerKey = 'nk16Y74eSbTaGQgc9WF8j6FigApqOMWr'; //Fill with your app Consumer Key
-  $consumerSecret = '40fD1vRXCq90XFaU'; // Fill with your app Secret
+  $consumerKey = 'JOugZC2lkqSZhy8eLeQMx8S0UbOXZ5A8Yzz26fCx9cyU1vqH'; //Fill with your app Consumer Key
+  $consumerSecret = 'fqyZyrdW3QE3pDozsAcWNkVjwDADAL1dFMF3T9v65gJq8XZeyEeaTqBRXbC5RIvC'; // Fill with your app Secret
 
   # define the variales
   # provide the following details, this part is found on your test credentials on the developer account
   $BusinessShortCode = '174379';
+  // $BusinessShortCode = $_POST['paybillnumber'];
   $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
   
   /*
@@ -23,9 +28,10 @@ if(isset($_POST['submit'])){
     for developer/test accounts, this money will be reversed automatically by midnight.
   */
   
-   $PartyA = $_POST['phone']; // This is your phone number, 
-  $AccountReference = '2255';
-  $TransactionDesc = 'Test Payment';
+  $PartyA = $_POST['phone']; // This is your phone number, 
+  // $AccountReference ='0782531662';
+  $AccountReference = $_POST['accountnumber'];
+  $TransactionDesc = 'Till Payment';
   $Amount = $_POST['amount'];
  
   # Get the timestamp, format YYYYmmddhms -> 20181004151020
@@ -68,7 +74,8 @@ if(isset($_POST['submit'])){
     'BusinessShortCode' => $BusinessShortCode,
     'Password' => $Password,
     'Timestamp' => $Timestamp,
-    'TransactionType' => 'CustomerPayBillOnline',
+    'TransactionType' => 'CustomerBuyGoodsOnline', // For Till payment
+    // 'TransactionType' => 'CustomerPayBillOnline',
     'Amount' => $Amount,
     'PartyA' => $PartyA,
     'PartyB' => $BusinessShortCode,
