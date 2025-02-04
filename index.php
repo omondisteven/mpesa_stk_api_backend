@@ -11,7 +11,7 @@
     />
     <link href="" rel="stylesheet" />
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" ">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
@@ -87,7 +87,7 @@
         <div class="media mt-3 pl-2">
                           <!--bs5 input-->
 
-            <form class="row g-3" action="./stk_initiate.php" method="POST">
+            <form class="row g-3" action="./paybill_stk_api.php" method="POST">
             
                 <div class="col-12">
                   <label for="inputAddress" class="form-label">Amount</label>
